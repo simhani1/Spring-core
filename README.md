@@ -1,7 +1,6 @@
-<center>Spring-core</center>
-스프링 핵심 원리 - 기본편
-
-<center>TIL</center>
+<div align="center">
+  <h1>TIL</h1>
+</div>
 
 ###  2022/12/30
 
