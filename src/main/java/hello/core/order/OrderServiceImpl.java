@@ -9,9 +9,13 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    // private final DiscountPolicy discountPolicy = new FixDiscountpolicy();  // 할인 정책 변경 시 구현체만 변경하면 된다.
-     private final DiscountPolicy discountPolicy = new RateDiscountPolicy();  // 할인 정책 변경은 수월하다. 하지만 현재 Service 코드에 수정이 발생하므로 OCP에 위배된다.
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;  // 추상화된 인터페이스에만 의존하도록 설정, but 구현 객체는 어디서 전달받아야 하는가? -> AppConfig를 통해 생성자 주입을 받으면서 해결된다.
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
