@@ -87,7 +87,7 @@
 ### ApplicationContext에서 빈을 조회하는 일은 거의 없겠지만 '자동 의존관계 주입'에 대해서 공부할 때 도움이 되므로 알아는 두어야 하는 지식이다.
 
 #### BeanFactory와 ApplicationContext
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 - BeanFactory 
   - 스프링 컨테이너의 최상위 인터페이스
   - 스프링 빈을 관리하고 조회하는 역할을 담당한다.
@@ -96,7 +96,7 @@
   - BeanFactory 기능을 모두 상속받아서 제공한다.
   - 그럼 둘의 차이는 무엇인가?
     - 애플리케이션을 개발할 때는 빈 관리 및 조회 외의 많은 부가 기능이 필요하다.
-    ![img_2.png](img_2.png)
+    ![img_2.png](img/img_2.png)
 - ApplicationContext가 제공하는 부가기능
   - 메시지 소스를 활용한 국제화 기능
   - 환경변수
