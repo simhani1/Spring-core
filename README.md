@@ -175,6 +175,6 @@
   - 실제로 GCLIB의 내부 기술을 사용하는 것은 매우 어렵다.
   - 또한 AppConfig@GCLIB은 APppConfig를 상속받기 때문에 조회가 가능한 것이다.
 - 만약 @Configuration 어노테이션을 쓰지 않는다면 어떻게 될까?
-  ![img.png](img/img_6.png)
+![img.png](img/img_6.png)
   - 싱글톤이 보장되지 않는 것을 볼 수 있다.
 - 따라서 고민하지 말고 스프링 설정 정보는 항상 `@Configuration`을 사용하자.
