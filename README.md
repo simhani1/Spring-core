@@ -157,4 +157,24 @@
 #### @Configuraion의 역할
 - AppConfig 파일을 살펴보면 각 서비스 빈을 등록하는 과정에서 여러 개의 memberReposiopry 객체를 생성하는 것처럼 보인다.
 - 하지만 실제 결과는 하나의 객체를 사용한다고 나온다.
-- 
+```java
+    @Test
+    void configurationDeep() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        AppConfig bean = ac.getBean(AppConfig.class);
+
+        System.out.println("bean = " + bean.getClass());  // $$EnhancerBySpringCGLIB$$ad8aea39 가 클래스명 뒤에 추가적으로 출력된다.
+    }
+```
+- 이 코드의 결과로는 class hello.core.AppConfig 가 출력되어야 하는데 실제로는 아래와 같은 결과가 나온다.
+- `bean = class hello.core.AppConfig$$EnhancerBySpringCGLIB$$ad8aea39`
+- 이것은 스프링이 `CGLIB`이라는 바이트 코드 조작 라이브러리를 사용해서 AppConfig 클래스를 상속받은 임의의 다른 클래스를 만들고, 그 클래스를 스프링 빈으로 등록한다.
+![img.png](img/img_4.png)
+- AppConfig@GCLIB 예상 코드
+![img.png](img/img_5.png)
+  - 실제로 GCLIB의 내부 기술을 사용하는 것은 매우 어렵다.
+  - 또한 AppConfig@GCLIB은 APppConfig를 상속받기 때문에 조회가 가능한 것이다.
+- 만약 @Configuration 어노테이션을 쓰지 않는다면 어떻게 될까?
+  [img.png](img/img_6.png)
+  - 싱글톤이 보장되지 않는 것을 볼 수 있다.
+- 따라서 고민하지 말고 스프링 설정 정보는 항상 `@Configuration`을 사용하자.
