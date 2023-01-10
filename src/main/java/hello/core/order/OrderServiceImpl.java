@@ -12,14 +12,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;  // 추상화된 인터페이스에만 의존하도록 설정, but 구현 객체는 어디서 전달받아야 하는가? -> AppConfig를 통해 생성자 주입을 받으면서 해결된다.
+    @Autowired private MemberRepository memberRepository;
+    @Autowired private DiscountPolicy discountPolicy;  // 추상화된 인터페이스에만 의존하도록 설정, but 구현 객체는 어디서 전달받아야 하는가? -> AppConfig를 통해 생성자 주입을 받으면서 해결된다.
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+    // setter 주입
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        System.out.println("3, OrderServiceImpl.setMemberRepository");
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        System.out.println("2. OrderServiceImpl.setDiscountPolicy");
+//        this.discountPolicy = discountPolicy;
+//    }
+
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {  // 생성자로 의존성 주입
+//        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
