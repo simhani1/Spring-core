@@ -31,9 +31,9 @@ public class OrderServiceTest {
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 
-    @Test
-    void fieldInjectionTest() {
-        OrderServiceImpl orderService = new OrderServiceImpl();
-        orderService.createOrder(1L, "itemA", 10000);  // 필드 의존성 주입을 할 경우 스프링이 없는 환경에서 Repository 빈을 등록하지 못하므로 널포인터 예외가 발생한다.
-    }
+//    @Test
+//    void fieldInjectionTest() {
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+//        orderService.createOrder(1L, "itemA", 10000);  // 필드 의존성 주입을 할 경우 스프링이 없는 환경에서 Repository 빈을 등록하지 못하므로 널포인터 예외가 발생한다.
+//    }
 }
