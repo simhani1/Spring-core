@@ -18,19 +18,16 @@ public class OrderServiceImpl implements OrderService {
     // setter 주입
 //    @Autowired
 //    public void setMemberRepository(MemberRepository memberRepository) {
-//        System.out.println("3, OrderServiceImpl.setMemberRepository");
 //        this.memberRepository = memberRepository;
 //    }
 //
 //    @Autowired
 //    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-//        System.out.println("2. OrderServiceImpl.setDiscountPolicy");
 //        this.discountPolicy = discountPolicy;
 //    }
 
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {  // 생성자로 의존성 주입
-        System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
