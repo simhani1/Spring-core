@@ -1,5 +1,6 @@
 package hello.core.discount;
 
+import hello.core.annotation.MainDiscoutPolicy;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,7 +8,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
+@MainDiscoutPolicy  // 사용자가 직접 등록한 어노테이션을 등록할 수 있다.
+// @Qualifier를 사용하다가 오타가 발생할 수 있기 때문에 더욱 안전하게 적용이 가능하다.
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
