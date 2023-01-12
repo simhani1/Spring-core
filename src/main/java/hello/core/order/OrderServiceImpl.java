@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
 //    }
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {  // 생성자로 의존성 주입
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {  // 생성자로 의존성 주입
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
