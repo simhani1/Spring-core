@@ -389,3 +389,9 @@
   - session: HTTP session과 동일한 생명주기를 가지는 스코프
   - application: 서블릿 컨텍스트와 동일한 생명주기를 가지는 스코프
   - websocket: 웹 소켓과 동일한 생명주기를 가지는 스코프
+
+#### request 스코프 예제 개발
+- UUID를 사용해서 HTTP 요청을 구분하자
+- 테스트용 컨트롤러를 만들어서 서버를 실행했지만 서버 구동부터 실패한다.
+- 그 이유는 MyLogger 빈은 request스코프라서 고객의 request가 들어온 순간부터 생명주기가 시작된다. 하지만 서버가 실행되는 시점에는 request가 없으므로 의존성 주입이 안된다.
+- 이 문제를 ObjectProvider를 통해 해결할 수 있다.
